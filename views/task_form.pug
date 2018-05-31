@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 #{title}
+  
+  form(method='post', action='')
+    div.form-group(style='display: inline;')
+      label(for='description') Description:
+      input#description.form-control(type='text', name='description', value=(task === undefined? '' : task.description), placeholder='Task description', required='true')
+      label(for='status') Status:
+      select#status.form-control(type='select', name='status', placeholder='Select status', required='true')          
+          if task
+            option(value='ongoing' selected=(task.status=='ongoing'? 'selected' : false)) Ongoing
+            option(value='completed' selected=(task.status=='completed'? 'selected' : false)) Completed
+          else
+            option(value='ongoing' selected='selected') Ongoing
+            option(value='completed') Completed
+    button.btn.btn-primary(type='submit') Save
+    
+  if errors
+    ul
+      for error in errors
+        li(style='list-style: none')!= error.msg     
