@@ -7,13 +7,15 @@ block content
   each task in tasks    
     if task.status == 'completed'
       li(class="list-group-item list-group-item-success" style='list-style: none')
-        span(class='text-success') #{task.description}  #{task.status} 
-        a(href='/todo/task/'+task.id+'/update') Update 
-        a(href='/todo/task/'+task.id+'/delete') Delete 
+        span(style='color: black') #{task.description}
+        span(class='text-muted')  #{task.status} 
+        a(href='/todo/task/'+task.id+'/update' class='btn btn-info btn-sm') Update 
+        a(href='/todo/task/'+task.id+'/delete' class='btn btn-warning btn-sm') Delete 
     else
-      li(class="list-group-item list-group-item-danger" style='list-style: none')
-        span(class='text-danger') #{task.description}  #{task.status} 
-        a(href='/todo/task/'+task.id+'/update') Update 
-        a(href='/todo/task/'+task.id+'/delete') Delete
+      li(class="list-group-item list-group-item-info" style='list-style: none')
+        span(style='color: black') #{task.description}  
+        span(class='text-danger')  #{task.status} 
+        a(href='/todo/task/'+task.id+'/update' class='btn btn-info btn-sm') Update 
+        a(href='/todo/task/'+task.id+'/delete' class='btn btn-warning btn-sm') Delete
   else
     li(style='list-style: none') Task list is empty
